@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GemControl : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class GemControl : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        ScoreControl.totalScore += gemScore;
-        gemCollect.Play();
-        Destroy(gameObject);
+        if(other.gameObject.CompareTag("Player"))
+        {
+            ScoreControl.totalScore += gemScore;
+            gemCollect.Play();
+            Destroy(gameObject);
+        }
     }
 }
