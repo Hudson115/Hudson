@@ -6,6 +6,9 @@ TagManager:
   tags:
   - ChackPoint
   - CheckPoint
+  - Bullet
+  - Target
+  - Target2
   layers:
   - Default
   - TransparentFX

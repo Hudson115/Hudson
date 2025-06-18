@@ -16,6 +16,7 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] float jumpHeight = 1.2f;
     [SerializeField] bool isJumping;
     [SerializeField] float sensitivity = 2;
+
     private float verticalRotation = 0f;
 
     void Start()
@@ -93,11 +94,17 @@ public class PlayerControls : MonoBehaviour
             }
         }
         
-        if (transform.position.y < -10)
+        if (transform.position.y < -20)
         {
             ScoreControl.totalScore = 0;
-            SceneManager.LoadScene("Scene1");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+
+        if (Input.GetKeyDown("escape"))
+        {
+            Application.Quit();
+        }
+
     }
 
     IEnumerator ResetJump()

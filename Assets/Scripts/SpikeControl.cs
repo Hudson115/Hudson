@@ -17,10 +17,10 @@ public class SpikeControl : MonoBehaviour
     
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (other.gameObject.tag == "Player")
         {
             ScoreControl.totalScore = 0;
-            SceneManager.LoadScene("Scene1");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 

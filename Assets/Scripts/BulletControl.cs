@@ -1,29 +1,28 @@
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BulletControl : MonoBehaviour
 {
     [SerializeField] GameObject Bullet;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
         {
             ScoreControl.totalScore = 0;
-            SceneManager.LoadScene("Scene1");
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        Destroy(Bullet);
+        else if (other.gameObject.CompareTag("Bullet"))
+        {
+            // Implement behavior for bullet collision, e.g., ignore or bounce
+            // For example, we can simply ignore the collision:
+            Physics.IgnoreCollision(other, GetComponent<Collider>());
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
-
 }
